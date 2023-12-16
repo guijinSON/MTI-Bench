@@ -11,16 +11,15 @@ parser.add_argument("--batch_size", type=int, required=True, help="Batch size fo
 
 args = parser.parse_args()
 
-with open("compositional_instructions_ver2.0.json", 'r') as file:
+with open("data/MTI_BENCH.json", 'r') as file:
     data = json.load(file)
-data = {k:v for k,v in data.items() if k in ["002","012","015","016","018"]}
 
 model, tokenizer = load_hf_lm_and_tokenizer(
                 args.model_name,
                 torch_dtype = torch.float16
                 )
 
-CoT = pd.read_excel("cot_breakdown.xlsx")
+CoT = pd.read_excel("data/cot_breakdown.xlsx")
 
 print("starting evaluation")
 for k,v in list(data.items()):
