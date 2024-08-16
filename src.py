@@ -7,9 +7,7 @@ from tqdm import tqdm
 import time
 from openai import OpenAI
 
-client = OpenAI(
-  api_key="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"
-)
+client = OpenAI()
 
 def get_sni_json(task_name):
     url = "https://raw.githubusercontent.com/allenai/natural-instructions/master/tasks/<task>.json".replace("<task>",task_name)
